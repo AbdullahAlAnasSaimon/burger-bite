@@ -1,4 +1,5 @@
 import CountryDetails from "../components/CountryDetails/CountryDetails";
+import MealDetails from "../components/MealDetails/MealDetails";
 import Menu from "../components/Menu/Menu";
 import Traditional from "../components/Traditional/Traditional";
 
@@ -36,6 +37,13 @@ export const router = createBrowserRouter([
           return fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${params.countryName}`);
         },
         element: <CountryDetails></CountryDetails>
+      },
+      {
+        path: 'menu/traditional/:countryName/:mealId',
+        loader: async ({params}) => {
+          return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.mealId}`);
+        },
+        element: <MealDetails></MealDetails>
       }
     ]
   },
