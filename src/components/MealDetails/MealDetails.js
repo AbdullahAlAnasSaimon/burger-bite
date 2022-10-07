@@ -9,7 +9,7 @@ const MealDetails = () => {
     <div>
       <h1 className='text-3xl text-center'>{strMeal}</h1>
       <img className='block mx-auto my-5 w-6/12' src={strMealThumb} alt="" />
-      <div className='w-6/12 mx-auto border-2 border-red-200 p-5 text-lg'>
+      <div className='w-9/12 mx-auto border-2 border-red-200 p-5 text-lg'>
         <h3 className='text-center text-2xl font-semibold'>Ingredients List</h3>
         <div className='flex justify-between'>
           <p className='text-md font-bold my-3'>Ingredients</p>
