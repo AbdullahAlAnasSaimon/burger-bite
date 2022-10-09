@@ -14,7 +14,7 @@ useEffect(() => {
     <div>
       <h1 className='text-3xl font-bold text-center my-5'>{items} Traditional Food</h1>
       <h3 className='text-center text-2xl font-semibold'>Items Found : {itemsByCountry.meals.length}</h3>
-      <div className='grid grid-cols-3 gap-5 w-10/12 mx-auto mt-10 text-orange-900 font-bold'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-10/12 mx-auto mt-10 pb-20 text-orange-900 font-bold'>
         {
           itemsByCountry.meals.map(item => <CountryByFood
             key={item.idMeal}
