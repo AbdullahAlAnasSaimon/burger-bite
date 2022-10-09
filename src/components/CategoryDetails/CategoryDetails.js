@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 
-const CountryDetails = () => {
-  const itemsByCountry = useLoaderData();
+const CategoryDetails = () => {
+  const itemsBySpecific = useLoaderData();
   const [items, setItems] = useState('');
 
 useEffect(() => {
@@ -12,21 +12,21 @@ useEffect(() => {
 
   return (
     <div>
-      <h1 className='text-3xl font-bold text-center my-5'>{items} Traditional Food</h1>
-      <h3 className='text-center text-2xl font-semibold'>Items Found : {itemsByCountry.meals.length}</h3>
+      <h1 className='text-3xl font-bold text-center my-5'>{items} Item</h1>
+      <h3 className='text-center text-2xl font-semibold'>Items Found : {itemsBySpecific.meals.length}</h3>
       <div className='grid grid-cols-3 gap-5 w-10/12 mx-auto mt-10 text-orange-900 font-bold'>
         {
-          itemsByCountry.meals.map(item => <CountryByFood
-            key={item.idMeal}
-            meal={item}
-          ></CountryByFood>)
+          itemsBySpecific.meals.map(sitem => <FoodBySpecificItem
+            key={sitem.idMeal}
+            meal={sitem}
+          ></FoodBySpecificItem>)
         }
       </div> 
     </div>
   );
 };
 
-const CountryByFood = ({ meal }) => {
+const FoodBySpecificItem = ({ meal }) => {
   const {idMeal, strMeal, strMealThumb } = meal;
   return (
       <div className='bg-white w-full h-auto rounded-xl shadow-md hover:shadow-lg'>
@@ -38,4 +38,4 @@ const CountryByFood = ({ meal }) => {
   );
 };
 
-export default CountryDetails;
+export default CategoryDetails;

@@ -1,4 +1,7 @@
+import Categories from "../components/Categories/Categories";
+import CategoryDetails from "../components/CategoryDetails/CategoryDetails";
 import CountryDetails from "../components/CountryDetails/CountryDetails";
+import Error from "../components/Error/Error";
 import MealDetails from "../components/MealDetails/MealDetails";
 import Menu from "../components/Menu/Menu";
 import Traditional from "../components/Traditional/Traditional";
@@ -32,6 +35,13 @@ export const router = createBrowserRouter([
         element: <Traditional></Traditional>
       },
       {
+        path: '/menu/categories',
+        loader: async () =>{
+         return fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+        },
+        element: <Categories></Categories>
+      },
+      {
         path: 'menu/traditional/:countryName',
         loader: async ({params}) => {
           return fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${params.countryName}`);
@@ -39,7 +49,21 @@ export const router = createBrowserRouter([
         element: <CountryDetails></CountryDetails>
       },
       {
-        path: 'menu/traditional/:countryName/:mealId',
+        path: '/menu/categories/:specificItem',
+        loader: async({params}) => {
+          return fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.specificItem}`);
+        },
+        element: <CategoryDetails></CategoryDetails>
+      },
+      {
+        path: `menu/traditional/:countryName/:mealId`,
+        loader: async ({params}) => {
+          return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.mealId}`);
+        },
+        element: <MealDetails></MealDetails>
+      },
+      {
+        path: `/menu/categories/:specificItem/:mealId`,
         loader: async ({params}) => {
           return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.mealId}`);
         },
@@ -47,5 +71,5 @@ export const router = createBrowserRouter([
       }
     ]
   },
-  {path: '*', element: <h1 className="text-5xl text-red-500 text-center">Ops! 404 Not Found!</h1>}
+  {path: '*', element: <Error></Error>}
 ])
