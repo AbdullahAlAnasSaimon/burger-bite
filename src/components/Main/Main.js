@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Main = () => {
   return (
-    <div>
+    <div className='bg-orange-100'>
       <div className='flex text-center justify-between items-center p-3'>
         <div className='w-5/12'>
           <Header></Header>
